@@ -5,6 +5,11 @@ require("dotenv").config();
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import passport from "passport";
+
+
+//config
+import googleAuthConfig from "./config/google.config";
 
 //microservices routes
 import Auth from "./API/Auth";
@@ -20,6 +25,11 @@ cuby.use(express.json());
 cuby.use(express.urlencoded({ extended: false }));
 cuby.use(helmet());
 cuby.use(cors());
+cuby.use(passport.initialize());
+
+
+//passport configuration
+googleAuthConfig(passport);
 
 //application Routes
 cuby.use("/auth", Auth);
