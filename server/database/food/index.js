@@ -28,6 +28,9 @@ const FoodSchema = new mongoose.Schema(
         ref: "Reviews",
       },
     },
+    {
+      timestamps: true,
+    }
 );
   
 export const FoodModel = mongoose.model("Foods", FoodSchema);

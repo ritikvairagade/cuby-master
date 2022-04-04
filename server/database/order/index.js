@@ -20,6 +20,9 @@ const OrderSchema = new mongoose.Schema(
       },
     ],
   },
+  {
+    timestamps: true,
+  }
 );
 
 export const OrderModel = mongoose.model("Orders", OrderSchema);
