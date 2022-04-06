@@ -13,7 +13,9 @@ import googleAuthConfig from "./config/google.config";
 
 //microservices routes
 import Auth from "./API/Auth";
-import Restaurant from "./API/Restaurant"
+import Restaurant from "./API/Restaurant";
+import Food from "./API/Food";
+import Image from "./API/Image";
 
 
 //Database connection
@@ -34,7 +36,9 @@ googleAuthConfig(passport);
 
 //application Routes
 cuby.use("/auth", Auth);
-cuby.use("/restaurant", Restaurant)
+cuby.use("/restaurant", Restaurant);
+cuby.use("/food", Food);
+cuby.use("/image", Image);
 
 
 cuby.get("/", (req, res) => res.json({ message: "setup sucess"}));

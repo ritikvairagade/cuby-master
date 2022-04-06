@@ -36,7 +36,6 @@ Method    GET
 */
 Router.get("/:_id", async (req, res) => {
   try {
-    await ValidateRestaurantId(req.params);
 
     const { _id } = req.params;
     const restaurant = await RestaurantModel.findById(_id);
@@ -59,7 +58,6 @@ Method    GET
 */
 Router.get("/search", async (req, res) => {
   try {
-    await ValidateRestaurantSearchString(req.body);
 
     const { searchString } = req.body;
 
