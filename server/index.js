@@ -10,12 +10,19 @@ import passport from "passport";
 
 //config
 import googleAuthConfig from "./config/google.config";
+import routeConfig from "./config/route.config";
+
 
 //microservices routes
 import Auth from "./API/Auth";
 import Restaurant from "./API/Restaurant";
 import Food from "./API/Food";
 import Image from "./API/Image";
+import Order from "./API/orders";
+import Reviews from "./API/reviews";
+import User from "./API/User";
+import Menu from "./API/menu";
+
 
 
 //Database connection
@@ -33,12 +40,17 @@ cuby.use(passport.initialize());
 
 //passport configuration
 googleAuthConfig(passport);
+routeConfig(passport);
 
 //application Routes
 cuby.use("/auth", Auth);
 cuby.use("/restaurant", Restaurant);
 cuby.use("/food", Food);
 cuby.use("/image", Image);
+cuby.use("/order", Order);
+cuby.use("/reviews", Reviews);
+cuby.use("/user", User);
+cuby.use("/menu", Menu);
 
 
 cuby.get("/", (req, res) => res.json({ message: "setup sucess"}));
