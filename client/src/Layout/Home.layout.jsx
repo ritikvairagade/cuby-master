@@ -1,19 +1,23 @@
 import React from "react";
 
-// Components
+
+
+//Components 
 import Navbar from "../Components/Navbar";
-import FoodTab from "../Components/FoodTab"
+import FoodTab from "../Components/FoodTab";
 
 const HomeLayout = (props) => {
-  return (
+return (
     <>
-      <Navbar />
-      <div className="container mx-auto px-4 lg:px-20 ">
-        {props.children}
-      </div>
-      <FoodTab />
+        <Navbar />
+        <FoodTab/>
+    <div className="container mx-auto px-4 lg:px-40">{props.children}</div>
+     
     </>
-  );
+);
+
 };
+
+
 
 export default HomeLayout;
