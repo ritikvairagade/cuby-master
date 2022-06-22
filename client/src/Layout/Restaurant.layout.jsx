@@ -43,7 +43,7 @@ const RestaurantLayout = (props) => {
     <>
       {" "}
       <RestaurantNavbar />
-      <div className="container mx-auto px-4 lg:px-20 ">
+      <div className="container mx-auto px-4 lg:px-20 pb-10 ">
         <ImageGrid
           images={[
             "https://b.zmtcdn.com/data/pictures/0/3300300/bedddb08e3eafa541fdec9db26613993.jpg",

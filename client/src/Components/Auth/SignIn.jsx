@@ -1,14 +1,31 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import {FcGoogle} from "react-icons/fc"
+import { useDispatch } from "react-redux";
+
+import { signIn } from "../../Redux/Reducer/Auth/Auth.action";
 
 export default function SignIn({isOpen, setIsOpen}) {
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => setUserData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   function closeModal() {
     setIsOpen(false)
   }
 
-  
+  const submit = () => {
+    setUserData({
+      email: "",
+      password: "",
+    });
+    dispatch(signIn(userData));
+  };
 
   return (
     <>
@@ -61,13 +78,32 @@ export default function SignIn({isOpen, setIsOpen}) {
                  <form className="flex flex-col gap-3" >
                         <div className="w-full flex flex-col gap-2">
                       <label htmlFor="email" >Email</label>
-                      <input type="text" id="email" placeholder="Email@email.com" className="w-full border border-gray-400 px-3 py-4 rounded-lg focus:outline-none focus:border-cuby-400"/>
+                      <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        onChange={handleChange}
+                        value={userData.email}
+                        placeholder="email@email.com"
+                        className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-cuby-400"
+                      />
                        </div>
                        <div className="w-full flex flex-col gap-2">
                       <label htmlFor="password" >Password</label>
-                      <input type="password" id="password" placeholder="********" className="w-full border border-gray-400 px-3 py-4 rounded-lg focus:outline-none focus:border-cuby-400"/>
+                      <input
+                        type="password"
+                        id="password"
+                        placeholder="*********"
+                        value={userData.password}
+                        name="password"
+                        onChange={handleChange}
+                        className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-cuby-400"
+                      />
                        </div>
-                       <div className="w-full bg-cuby-400 text-white text-center py-2 rounded-lg ">
+                       <div
+                          onClick={submit}
+                          className="w-full  text-center bg-cuby-400 text-white py-2 rounded-lg"
+                       >
                         Sign In
                        </div>
                  </form>

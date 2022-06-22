@@ -13,8 +13,8 @@ export const getCart = () => async (dispatch) => {
   try {
     let cartData = { cart: [] };
 
-    if (localStorage.zomatoCart) {
-      const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
+    if (localStorage.cubyCart) {
+      const { cart } = JSON.parse(localStorage.getItem("cubyCart"));
       cartData.cart = cart;
     }
 
@@ -28,14 +28,14 @@ export const addCart = (newFood) => async (dispatch) => {
   try {
     let cartData = { cart: [] };
 
-    if (localStorage.zomatoCart) {
-      const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
+    if (localStorage.cubyCart) {
+      const { cart } = JSON.parse(localStorage.getItem("cubyCart"));
       cartData.cart = cart;
     }
 
     cartData.cart.push(newFood);
 
-    localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
+    localStorage.setItem("cubyCart", JSON.stringify({ cart: cartData.cart }));
 
     return dispatch({ type: ADD_CART, payload: cartData.cart });
   } catch (error) {
@@ -48,8 +48,8 @@ export const DeleteCart = (foodID) => async (dispatch) => {
   try {
     let cartData = { cart: [] };
 
-    if (localStorage.zomatoCart) {
-      const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
+    if (localStorage.cubyCart) {
+      const { cart } = JSON.parse(localStorage.getItem("cubyCart"));
       cartData.cart = cart;
     }
 
@@ -59,7 +59,7 @@ export const DeleteCart = (foodID) => async (dispatch) => {
 
     cartData.cart = cartData.cart.filter(({ _id }) => _id !== foodID);
 
-    localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
+    localStorage.setItem("cubyCart", JSON.stringify({ cart: cartData.cart }));
 
     return dispatch({ type: DELETE_CART, payload: cartData.cart });
   } catch (error) {
@@ -71,8 +71,8 @@ export const IncQty = (foodID) => async (dispatch) => {
   try {
     let cartData = { cart: [] };
 
-    if (localStorage.zomatoCart) {
-      const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
+    if (localStorage.cubyCart) {
+      const { cart } = JSON.parse(localStorage.getItem("cubyCart"));
       cartData.cart = cart;
     }
 
@@ -86,7 +86,7 @@ export const IncQty = (foodID) => async (dispatch) => {
         : food
     );
 
-    localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
+    localStorage.setItem("cubyCart", JSON.stringify({ cart: cartData.cart }));
 
     return dispatch({ type: INCREMENT_QTY, payload: cartData.cart });
   } catch (error) {
@@ -98,8 +98,8 @@ export const DecQty = (foodID) => async (dispatch) => {
   try {
     let cartData = { cart: [] };
 
-    if (localStorage.zomatoCart) {
-      const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
+    if (localStorage.cubyCart) {
+      const { cart } = JSON.parse(localStorage.getItem("cubyCart"));
       cartData.cart = cart;
     }
 
@@ -113,7 +113,7 @@ export const DecQty = (foodID) => async (dispatch) => {
         : food
     );
 
-    localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
+    localStorage.setItem("cubyCart", JSON.stringify({ cart: cartData.cart }));
 
     return dispatch({ type: DECREMENT_QTY, payload: cartData.cart });
   } catch (error) {

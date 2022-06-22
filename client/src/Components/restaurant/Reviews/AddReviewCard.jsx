@@ -5,7 +5,15 @@ import ReviewModal from './ReviewModel';
 
 const AddReviewCard = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const openModal = () => setIsOpen(true)
+    
+    const openModal = () => {
+        if (!localStorage.cubyUser) {
+          return alert("Please sign in to post a review");
+        }
+    
+        setIsOpen(true);
+      };
+
     return (
         <>   
             <ReviewModal isOpen={isOpen} setIsOpen={setIsOpen} />
