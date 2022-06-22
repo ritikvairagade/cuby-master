@@ -13,10 +13,17 @@ import { NextArrow,PrevArrow } from '../../Components/CarousalArrow';
 import ReviewCard from '../../Components/restaurant/Reviews/reviewCard';
 import Mapview from '../../Components/restaurant/Mapview';
 
+
+//Redux Action
 import { getImage } from "../../Redux/Reducer/Image/Image.action";
+import { getReviews } from "../../Redux/Reducer/Reviews/review.action";
+
 
 const Overview = () => {
     const [menuImage, setMenuImages] = useState({ images: [] });
+    const [Reviews, setReviewss] = useState([]);
+
+
     const {id} = useParams()
 
     const settings = {
@@ -68,6 +75,10 @@ const Overview = () => {
             data.payload.image.images.map(({ location }) => images.push(location));
             setMenuImages(images);
           });
+
+          dispatch(getReviews(reduxState?._id)).then((data) =>
+            setReviewss(data.payload.reviews)
+          );
         }
     }, []);
 
@@ -138,20 +149,19 @@ const Overview = () => {
                            size={24}
                              activeColor="#ffd700"
                         />
+                        {Reviews.map((reviewData) => (
+                            <ReviewCard {...reviewData} />
+                        ))}
                    </div>
                    <div className="my-4 w-full md:hidden flex flex-col gap-4">
-                   <Mapview
+                    <Mapview
                         title={reduxState?.name}
                         phno={`+91${reduxState?.contactNumber}`}
                         mapLocation={getLatLong(reduxState?.mapLocation)}
                         address={reduxState?.address}
-            />
+                    />
                    </div>
-                   <div className="my-4 flex flex-col gap-4">
-                       <ReviewCard />
-                       <ReviewCard />
-                       <ReviewCard />
-                   </div>
+                   <div className="my-4 flex flex-col gap-4"></div>
                     
                 </div>
                 <aside style={{height: "fit-content"}} className="hidden md:flex md:w-4/12 sticky rounded-xl top-2 bg-white p-3 shadow-md flex flex-col gap-4">
