@@ -22,6 +22,7 @@ import Order from "./API/orders";
 import Reviews from "./API/reviews";
 import User from "./API/User";
 import Menu from "./API/menu";
+import Payments from "./API/Payments";
 
 
 
@@ -51,6 +52,7 @@ cuby.use("/order", Order);
 cuby.use("/reviews", Reviews);
 cuby.use("/user", User);
 cuby.use("/menu", Menu);
+cuby.use("/payments", Payments);
 
 
 cuby.get("/", (req, res) => res.json({ message: "setup sucess"}));
