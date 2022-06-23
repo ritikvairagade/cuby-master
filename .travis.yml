@@ -1,1 +1,23 @@
+sudo: required
 
+# Install Docker
+services:
+  - docker
+
+# Execute logic
+script:
+  - echo "Hello Students!"
+
+after_success:
+  # Build all the docker files
+  - docker build -t ritikleton/cuby-client ./client
+  - docker build -t ritikleton/cuby-server ./server
+  - docker build -t ritikleton/cuby-nginx ./nginx
+
+  # log in docker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # push to docker hub
+  - docker push ritikleton/cuby-shapeai-client
+  - docker push ritikleton/cuby-shapeai-server
+  - docker push ritikleton/cuby-nginx
