@@ -6,6 +6,7 @@ import {RiSearchLine} from "react-icons/ri"
 import {AiOutlineArrowLeft} from "react-icons/ai"
 import gravatar from "gravatar";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 // components
 import SignIn from "../Auth/SignIn";
@@ -19,8 +20,10 @@ const MobileNav = ({SignIn, SignUp}) => {
 
      return (
        <div className="flex w-full items-center justify-between lg:hidden">
-           <AiOutlineArrowLeft/>
-         <div className="w-28">
+        <Link to={`/delivery`} className="w-full">
+           <AiOutlineArrowLeft/> 
+           </Link>  
+               <div className="w-28">
                    <img src="https://i.ibb.co/7G5YkWS/M-logo.png" alt="logo" className="w-full h-full" />     
               </div>
 
@@ -77,7 +80,9 @@ const LargeNav = ({ SignIn, SignUp }) => {
     <div className=" hidden lg:inline container px-40 mx-auto">
     <div className="hidden gap-4 w-full items-center  justify-around  lg:flex ">
     <div className="w-28">
-    <img src="https://i.ibb.co/7G5YkWS/M-logo.png" alt="logo" className="w-full h-full" />     
+    <Link to={`/delivery`} className="w-full">
+    <img src="https://i.ibb.co/7G5YkWS/M-logo.png" alt="logo" className="w-full h-full" /> 
+    </Link>    
     </div>
 
      <div className="w-3/4 bg-white shadow-md  p-3 flex items-center gap-3 border border-gray-200 rounded">
